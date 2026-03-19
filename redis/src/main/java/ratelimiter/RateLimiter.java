@@ -30,6 +30,7 @@ public class RateLimiter {
     long total_requests = redis.zcard(label);
     if (total_requests < maxRequestCount) {
       redis.zadd(label, timeNow, UUID.randomUUID().toString());
+      redis.expire(label, timeWindowSeconds + 1);
       return true;
     }
     return false;

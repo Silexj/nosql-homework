@@ -6,7 +6,6 @@ CREATE TABLE user_posts (
     post_id bigint,
     content text,
     username TEXT STATIC,
-    email TEXT STATIC,
     PRIMARY KEY (user_id, created_at, post_id)
 ) WITH CLUSTERING ORDER BY (created_at DESC);
 

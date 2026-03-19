@@ -5,7 +5,7 @@
 CREATE TABLE IF NOT EXISTS server_logs
 (
     `timestamp` DateTime,
-    `user_id` Int64,
+    `user_id` UInt64,
     `endpoint` String,
     `response_time_ms` Int32,
     `status_code` Int16,
@@ -32,7 +32,7 @@ LIMIT 5;
 -- TODO: напишите SELECT запрос с использованием функции toHour() или formatDateTime()
 SELECT formatDateTime(`timestamp`, '%Y-%m-%d %H') as hour, count() as total_count
 FROM server_logs
-GROUP BY formatDateTime(`timestamp`, '%Y-%m-%d %H');
+GROUP BY hour;
 
 
 -- 5. Запрос: Процент ошибок (status_code >= 400) для каждого endpoint'а
